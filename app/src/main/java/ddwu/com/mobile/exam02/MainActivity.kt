@@ -18,8 +18,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+		binding.myCustomView.setOnTouchListener(  )
 
     }
+
+	inner class MyTouch : View.onTouchListener{
+		override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+			binding.myCustomView.posX=
+		return true	
+	}
+
+	inner class MyClick : View.OnLongClickListener{
+		override fun onLongClick(p0: View?): Boolean {
+		true
+		}
 
 
 }
