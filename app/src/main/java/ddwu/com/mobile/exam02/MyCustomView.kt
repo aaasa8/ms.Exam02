@@ -32,5 +32,12 @@ class MyCustomView : View {
 
         canvas?.drawCircle(posX, posY, r, paint)
     }
+	override fun onTouchEvent(event: MotionEvent?): Boolean {
+		posX = event!!.x
+		posY = event!!.y
+		invalidate()
+		return true
+	}
+
 
 }
