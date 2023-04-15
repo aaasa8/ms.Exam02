@@ -17,21 +17,32 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-		binding.myCustomView.setOnTouchListener(  )
-
+				//A -> B로 가려먼 touch에서 이벤트가 끝나면 안됨! return false 람다함수면 return 생략
+				binding.myCustomView.setOnTouchListener({
+					v: View?, event: MotionEvent? ->
+					binding.myCustomView.posX = event!!.x
+					binding.myCustomView.posY = event!!.y
+					binding.myCustomView.invalidate()
+					false
+				})
+				binding.myCustomView.setOnLongClickListener(MyLongClick())
     }
-
+/* A) 리스너를 이용한 방법
 	inner class MyTouch : View.onTouchListener{
 		override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-			binding.myCustomView.posX=
-		return true	
-	}
-
+			binding.myCustomView.posX = event!!.x
+			binding.myCustomView.posY = event!!.y
+			binding.myCustomView.invalidate()
+			return false
+		}
+	}*/
+//B) 색을 바꾸는 LongClick 구현해보기
 	inner class MyClick : View.OnLongClickListener{
 		override fun onLongClick(p0: View?): Boolean {
+			binding
 		true
 		}
+	}
 
 
 }
