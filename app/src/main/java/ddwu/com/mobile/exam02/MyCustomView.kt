@@ -32,12 +32,14 @@ class MyCustomView : View {
 
         canvas?.drawCircle(posX, posY, r, paint)
     }
+
+/*터치하는 곳으로 원 이동
 	override fun onTouchEvent(event: MotionEvent?): Boolean {
-		posX = event!!.x
+		posX = event!!.x //null값이면 안되기 때문에 !! 추가
 		posY = event!!.y
 		invalidate()
 		return true
-	}
+	}*/
 
 
 }
