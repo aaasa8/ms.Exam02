@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 //B) 색을 바꾸는 LongClick 구현해보기
 	inner class MyClick : View.OnLongClickListener{
 		override fun onLongClick(p0: View?): Boolean {
-			binding
+			binding.myCustomView.paintColor = 
 		true
 		}
 	}
