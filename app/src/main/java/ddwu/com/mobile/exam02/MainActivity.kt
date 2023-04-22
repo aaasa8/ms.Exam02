@@ -12,11 +12,42 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
 
+		val colors = arrayIf("Red", "Cyan", "Blue")
+		var selectedColor = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//실습07
+binding.myCustomView.setOnLongClickListener {
+		AlertDialog.Builder(this).run{
+			setTitle("색상 선택")
+			setSingleChoiceItems(colors, selectedColor, object: DialogInterface.OnClickListener{
+				override fun onClick(dialog: DialogInterface?, which: Int){
+					selectedColor = which
+				}
+			})
+			setPositiveButton("확인", object: DialogInterface.OnClickListener{
+				override fun onClick(dialog: DialogInterface?, which: Int){
+					when (selectedColor) {
+						0 -> binding.myCustomView.painColor = Color.RED
+						1 -> binding.myCustomView.painColor = Color.CYAN
+						2 -> binding.myCustomView.painColor = Color.BLUE
+					}
+					binding.myCustomView.invalidate()
+				}
+			})
+			setNegative("취소", null)
+			show()
+		}
+		true
+	}
+
+
+
 				//A -> B로 가려먼 touch에서 이벤트가 끝나면 안됨! return false 람다함수면 return 생략
 				binding.myCustomView.setOnTouchListener({
 					v: View?, event: MotionEvent? ->
